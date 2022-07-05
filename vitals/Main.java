@@ -16,9 +16,8 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-
-		assert (batteryIsOk(25, 70, 0.7f) == true);
-		assert (batteryIsOk(50, 85, 0.0f) == false);
-		System.out.println("Some more tests needed");
+		Test test = new Test();
+		test.testConditions();
+		System.out.println("All is well!");
 	}
 }
