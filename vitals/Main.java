@@ -1,41 +1,18 @@
-package vitals;
-
 public class Main {
 	static boolean batteryIsOk(float temperature, float soc, float chargeRate) {
-		boolean flag = (chargeRateIsOk(chargeRate)&& socIsOk(soc)&&temperatureIsOk(temperature));
-		if(flag) {
-			return true;
-		}
-		return false;
+		return (checkIsOk(chargeRate, 0, 0.8, "Charge Rate") 
+				||checkIsOk(soc, 20, 80, "State of Charge") 
+				|| checkIsOk(temperature, 0, 45, "Temperature"));
 	}
 	
-	static boolean chargeRateIsOk(float chargeRate) {
-		if (chargeRate > 0.8) {
-			System.out.println("Charge Rate is out of range!");
+	static boolean checkIsOk(float parameter, float lowerLimit , double upperLimit, String checkName) {
+		if (parameter > upperLimit || parameter < lowerLimit ) {
+			System.out.println(checkName +" is out of range!");
 			return false;
 		}
 		return true;
 	}
-
-	static boolean socIsOk(float soc) {
-		if (soc < 20 || soc > 80)
-		{
-			System.out.println("State of Charge is out of range!");
-			return false;
-		} else {
-			return true;
-		}
-	}
 	
-	static boolean temperatureIsOk(float temperature) {
-		if (temperature < 0 || temperature > 45) {
-			System.out.println("Temperature is out of range!");
-			return false;
-		} else {
-			return true;
-		}
-	}
-
 	public static void main(String[] args) {
 
 		assert (batteryIsOk(25, 70, 0.7f) == true);
