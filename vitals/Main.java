@@ -8,7 +8,7 @@ public class Main {
 	}
 	
 	static boolean checkIsOk(float parameter, float lowerLimit , double upperLimit, String checkName) {
-		if (parameter > upperLimit || parameter < lowerLimit ) {
+		if (parameter >= upperLimit || parameter <= lowerLimit ) {
 			System.out.println(checkName +" is out of range!");
 			return false;
 		}
